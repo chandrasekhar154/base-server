@@ -20,6 +20,33 @@ const fileOwner = 'server.js';
 
 app.use(helmet());
 
+process.on('uncaughtException', (err) => {
+    console.log(err.stack, 500, fileOwner, 'uncaughtException');
+});
+
+process.on('unhandledRejection', (reason) => {
+    console.log(reason.stack, 500, fileOwner, 'unhandledRejection');
+});
+
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true}));
+app.use((req, res, next) => {
+    res.setHeader('Access-Control-Allow-Origin', '*');
+    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
+    res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type, Authorization, uxfauthorization');
+    next();
+});
+
+const corsOptions = {
+    exposedHeaders : 'uxfauthorization',
+}
+
+app.use(cors(corsOptions));
+app.use(route, appRoutes);
+// app.use('/', utilRoutes);
+app.use(cookieParser);
+app.use(csrfMiddleware);
+
 const server = app.listen(process.env.PORT || 5001, () => {
     const host = server.address().address;
     const { port } = server.address();
