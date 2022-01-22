@@ -4,3 +4,7 @@
 # package-lock
 /app/package-lock.json
 /app/yarn.lock
+
+# nyc report
+/app/.nyc_output
+/app/coverage
