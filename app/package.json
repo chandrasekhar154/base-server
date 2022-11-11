@@ -6,8 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "nodemon server.js",
-    "test-cases" : "set NODE_LOCALHOST=true && mocha ./tests/*.js --timeout 15000",
-    "test-coverage" : "nyc --reporter=lcov npm run test-cases"
+    "test-cases": "set NODE_LOCALHOST=true && mocha ./tests/*.js --timeout 15000",
+    "test-coverage": "nyc --reporter=lcov npm run test-cases"
   },
   "author": "",
   "license": "ISC",
@@ -22,6 +22,8 @@
     "express-session": "^1.17.2",
     "helmet": "^4.6.0",
     "mocha": "^9.1.4",
+    "moment": "^2.29.4",
+    "mysql": "^2.18.1",
     "nock": "^13.2.2",
     "node-uuid": "^1.4.8",
     "nodemon": "^2.0.14",
