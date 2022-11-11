@@ -38,7 +38,8 @@ module.exports.getCustomers = async(req, res) => {
         console.log(err);
         let result = {
             status : "failed",
-            details : "Internal Server Error"
+            details : "Internal Server Error",
+            err : err.result
         }
         res.status(500).send(result);
     }
