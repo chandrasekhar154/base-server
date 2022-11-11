@@ -1,6 +1,8 @@
 # dependencies
 /app/node_modules
 
+node_modules
+
 # package-lock
 /app/package-lock.json
 /app/yarn.lock
