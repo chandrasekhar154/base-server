@@ -1,4 +1,3 @@
-
 const connectionPool = require('../db-config/db-config-logic');
 const { v4: uuidv4 } = require('uuid');
 
@@ -42,7 +41,6 @@ module.exports.createUser = (req, res)=> {
                 if(err){
                     reject({ 'statusCode' : 404, 'result': err });
                 }
-                
                 resolve({ 'statusCode' : 200, 'result': result });
                 
             });
