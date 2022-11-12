@@ -8,4 +8,6 @@ router.route('/ping').get(appDelegates.ping);
 
 router.route('/getCustomers').get(appDelegates.getCustomers);
 
+router.route('/createUser').post(appDelegates.createUser);
+
 module.exports = router;

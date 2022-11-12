@@ -7,4 +7,13 @@ const connectionPool = mysql.createConnection({
     database: 'ppmss'
 });
 
+connectionPool.connect(function(err) {
+    if (err) {
+      console.error('error connecting: ' + err.stack);
+      return;
+    }
+  
+    console.log('connected as id ' + connectionPool.threadId);
+  });
+
 module.exports = connectionPool;

@@ -44,3 +44,25 @@ module.exports.getCustomers = async(req, res) => {
         res.status(500).send(result);
     }
 }
+
+module.exports.createUser = async(req, res) => {
+    const functionName = "createUser";
+
+    logger.info(functionName);
+
+    try {
+        const addUser = await appServices.createUser(req, res);
+        if(addUser.statusCode === 200) {
+            res.status(addUser.statusCode).send(addUser.result);
+        }
+    }
+    catch(err) {
+        console.log(err);
+        let result = {
+            status : "failed",
+            details : "Internal Server Error",
+            err : err.result
+        }
+        res.status(500).send(result);
+    }
+}
