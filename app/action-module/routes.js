@@ -6,8 +6,10 @@ const appDelegates = require('../delegate-module/app-delegates');
 
 router.route('/ping').get(appDelegates.ping);
 
-router.route('/getCustomers').get(appDelegates.getCustomers);
+// router.route('/getCustomers').get(appDelegates.getCustomers);
 
-router.route('/createUser').post(appDelegates.createUser);
+// router.route('/createUser').post(appDelegates.createUser);
+
+router.route('/addVendor').post(appDelegates.addVendor);
 
 module.exports = router;

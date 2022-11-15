@@ -23,37 +23,59 @@ module.exports.ping = async(req, res) => {
     }
 };
 
-module.exports.getCustomers = async(req, res) => {
-    const functionName = "getCustomers";
+// module.exports.getCustomers = async(req, res) => {
+//     const functionName = "getCustomers";
 
-    logger.info(functionName)
+//     logger.info(functionName)
 
-    try {
-        const customersList = await appServices.getCustomers(req);
-        if(customersList.statusCode === 200) {
-            res.status(customersList.statusCode).send(customersList.result);
-        }
-    }
-    catch(err) {
-        console.log(err);
-        let result = {
-            status : "failed",
-            details : "Internal Server Error",
-            err : err.result
-        }
-        res.status(500).send(result);
-    }
-}
+//     try {
+//         const customersList = await appServices.getCustomers(req);
+//         if(customersList.statusCode === 200) {
+//             res.status(customersList.statusCode).send(customersList.result);
+//         }
+//     }
+//     catch(err) {
+//         console.log(err);
+//         let result = {
+//             status : "failed",
+//             details : "Internal Server Error",
+//             err : err.result
+//         }
+//         res.status(500).send(result);
+//     }
+// }
 
-module.exports.createUser = async(req, res) => {
-    const functionName = "createUser";
+// module.exports.createUser = async(req, res) => {
+//     const functionName = "createUser";
+
+//     logger.info(functionName);
+
+//     try {
+//         const addUser = await appServices.createUser(req, res);
+//         if(addUser.statusCode === 200) {
+//             res.status(addUser.statusCode).send(addUser.result);
+//         }
+//     }
+//     catch(err) {
+//         console.log(err);
+//         let result = {
+//             status : "failed",
+//             details : "Internal Server Error",
+//             err : err.result
+//         }
+//         res.status(500).send(result);
+//     }
+// }
+
+module.exports.addVendor = async(req, res) => {
+    const functionName = "addVendor";
 
     logger.info(functionName);
 
     try {
-        const addUser = await appServices.createUser(req, res);
-        if(addUser.statusCode === 200) {
-            res.status(addUser.statusCode).send(addUser.result);
+        const addVendor = await appServices.addVendor(req, res);
+        if(addVendor.statusCode === 200) {
+            res.status(addVendor.statusCode).send(addVendor.result);
         }
     }
     catch(err) {
