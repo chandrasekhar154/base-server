@@ -67,6 +67,28 @@ module.exports.ping = async(req, res) => {
 //     }
 // }
 
+module.exports.getVendors = async(req, res) => {
+    const functionName = "getVendors";
+
+    logger.info(functionName)
+
+    try {
+        const getVendorList = await appServices.getVendors(req);
+        if(getVendorList.statusCode === 200) {
+            res.status(getVendorList.statusCode).send(getVendorList.result);
+        }
+    }
+    catch(err) {
+        console.log(err);
+        let result = {
+            status : "failed",
+            details : "Internal Server Error",
+            err : err.result
+        }
+        res.status(500).send(result);
+    }
+}
+
 module.exports.addVendor = async(req, res) => {
     const functionName = "addVendor";
 
@@ -76,6 +98,28 @@ module.exports.addVendor = async(req, res) => {
         const addVendor = await appServices.addVendor(req, res);
         if(addVendor.statusCode === 200) {
             res.status(addVendor.statusCode).send(addVendor.result);
+        }
+    }
+    catch(err) {
+        console.log(err);
+        let result = {
+            status : "failed",
+            details : "Internal Server Error",
+            err : err.result
+        }
+        res.status(500).send(result);
+    }
+}
+
+module.exports.updateVendor = async(req, res) => {
+    const functionName = "updateVendor";
+
+    logger.info(functionName);
+
+    try {
+        const updateVendor = await appServices.updateVendor(req, res);
+        if(updateVendor.statusCode === 200) {
+            res.status(updateVendor.statusCode).send(updateVendor.result);
         }
     }
     catch(err) {
